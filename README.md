@@ -1,2 +1,2 @@
-# SHTU_Store_POS
+# HTU_Store_POS
 HTU Capstone - Point of sale
