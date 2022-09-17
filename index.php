@@ -5,8 +5,6 @@ session_start();
 require_once "./config.php";
 require_once "./functions.php";
 
-$connection=mysqli_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
 use Core\Models\User;
 use Core\Router;
 
@@ -52,30 +50,30 @@ if(isset($_COOKIE['logged_in_user'])){
 // Public Routes
 Router::get('/', 'front.list');
 Router::get('/single', 'front.single');
-Router::get('/tag_cloud', 'front.tags');
-Router::get('/news_tags', 'front.news_tags');
+Router::get('/tramsaction_cloud', 'front.tramsactions');
+Router::get('/items_tramsactions', 'front.items_tramsactions');
 
 
 // Adminstrating Routes
 Router::get('/admin', 'admin'); // permission:all
 
 // permission:admin && permission:new_edit
-Router::get('/admin/news', 'news.list');
-Router::get('/admin/news/single', 'news.single');
-Router::get('/admin/news/add', 'news.add');
-Router::post('/admin/news/store', 'news.store');
-Router::get('/admin/news/edit', 'news.edit');
-Router::post('/admin/news/update', 'news.update');
-Router::post('/admin/news/delete', 'news.delete');
+Router::get('/admin/items', 'items.list');
+Router::get('/admin/items/single', 'items.single');
+Router::get('/admin/items/add', 'items.add');
+Router::post('/admin/items/store', 'items.store');
+Router::get('/admin/items/edit', 'items.edit');
+Router::post('/admin/items/update', 'items.update');
+Router::post('/admin/items/delete', 'items.delete');
 
-// permission:admin && permission:tags_edit
-Router::get('/admin/tags', 'tags.list');
-Router::get('/admin/tags/single', 'tags.single');
-Router::get('/admin/tags/add', 'tags.add');
-Router::post('/admin/tags/store', 'tags.store');
-Router::get('/admin/tags/edit', 'tags.edit');
-Router::post('/admin/tags/update', 'tags.update');
-Router::post('/admin/tags/delete', 'tags.delete');
+// permission:admin && permission:transactions_edit
+Router::get('/admin/transactions', 'transactions.list');
+Router::get('/admin/transactions/single', 'transactions.single');
+Router::get('/admin/transactions/add', 'transactions.add');
+Router::post('/admin/transactions/store', 'transactions.store');
+Router::get('/admin/transactions/edit', 'transactions.edit');
+Router::post('/admin/transactions/update', 'transactions.update');
+Router::post('/admin/transactions/delete', 'transactions.delete');
 
 // permission:admin
 Router::get('/admin/users', 'users.list');

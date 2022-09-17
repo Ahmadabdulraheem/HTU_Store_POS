@@ -94,9 +94,9 @@ class Model
             $bind_values_arr[] = $column_value;
             switch($column){
                 case "id":
-                case "post_author":
-                case "post_id":
-                case "tag_id":
+                case "item_author":
+                case "item_id":
+                case "transaction_id":
                     $bind_types .= 'i';
                     break;
                 default:
@@ -126,9 +126,9 @@ class Model
             $bind_values_arr[] = $column_value;
             switch($column){
                 case "id":
-                case "post_author":
-                case "post_id":
-                case "tag_id":
+                case "item_author":
+                case "item_id":
+                case "transaction_id":
                     $bind_types .= 'i';
                     break;
                 default:
@@ -154,12 +154,12 @@ class Model
     function where($column, $value){
         $sql = "SELECT * FROM $this->table WHERE $column=?";
         $query = $this->connection->prepare($sql);
-        // integer columns: id, post_author, post_id, tag_id
+        // integer columns: id, item_author, item_id, transaction_id
         switch($column){
             case "id":
-            case "post_author":
-            case "post_id":
-            case "tag_id":
+            case "item_author":
+            case "item_id":
+            case "transaction_id":
                 $query->bind_param('i', $value);
                 break;
             default:
